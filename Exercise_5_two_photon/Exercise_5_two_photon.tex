@@ -71,17 +71,30 @@ A pulsed IR laser excites only at the focal point, as this is the only location 
 \label{1pvs2p}
 \end{figure}
 
-\subsection{Let's build a 2-photon!}
-You have in front of you the transmission scanning microscope from before. 
+
+\section{Building the scan engine}
+At the end of the last practical you added a lens in front of the scanners to focus the scanned beam onto the sample and obtain a sharper image. 
+Upon zooming in you would have noticed that the resolution quickly becomes limited. 
+This is because the NA of the beam is very low: the very narrow beam is going through a relatively long focal length lens. 
+To resolve this we want to (1) use proper objective and (2) fill the rear aperture of the objective with the scanned beam. 
+
 \begin{itemize}
-    \item What one thing do you need to change in order to excite a thin optical plane?
-    \item Read the safety information on the next page. Modify your setup and use a green fluorescent slide to verify that it works. 
+    \item Assemble the cage-mounted beam expander and use the laser beam to help you place the scan lens and tube lens at the sum of their focal lengths. Lock the lenses in place. You now have a beam expander.
+    \item Place the expander within the microscope frame and slide it back and forth until you get the expanded stationary beam at 1f from the tube lens. 
+    \item Place the objective at 1f from the tube lens and try forming an image of your Golgi-stained cells with the photodiode. Use ScanImage to make your life easier. 
+\end{itemize}
+ 
+
+\subsection{Let's build a 2-photon!}
+You now have a high quality transmission scanning microscope. 
+\begin{itemize}
+    \item What one thing do you need to change in order to excite a thin optical plane in a fluorescent medium?
+    \item Read the following safety information and route the new beam through your setup. 
+    \item Once done, scan the 920~nm beam over the green plastic slide. (Carefully) Observe the 2-photon effect by eye! 
 \end{itemize}
 
-
-\clearpage
 \section{IMPORTANT SAFETY INFORMATION}
-Read this laser safety information before beginning. 
+Read this laser safety information before commencing. 
 The following information should have been conveyed to you verbally. 
 Please ask if you did not receive verbal instruction or if you have questions about laser safety. 
 
@@ -104,16 +117,20 @@ Be very cautious around the set up:
 
 \clearpage
 
+
+
+
 \section{Getting a basic 2-photon image}
  Figure~\ref{fig:layout} is a schematic of the beam path you have on the table. 
 There is a shutter for safety, a beam expander to enlarge the beam so that it fills the scan mirrors, and a beam-splitter with a half-wave plate for altering laser power. 
 
 At this point you have a functioning scan engine for a 2-photon.
 Let's acquire an image! 
-Your transmission-based scanning microscope used a photodiode and with the bright fluorescent slide your 2-photon can also do so.
-However, as it stands the photodidoe will fail to provide you with an image?
-Why is this and how do you need to modify it?
-Perform the modification and use your scanning software to image the surface of the green slide. You should be able to see dust and scratches on the slide surface. 
+With the bright fluorescent slide (fluorescent paper will also work) your 2-photon can also obtain an image with the photodiode.
+However, as it stands the photodiode will fail to provide an image because there is something we need to block out.
+What is it? 
+How do we modify the setup ?
+Add the appropriate components and use your microscope to see dust and scratches on the slide surface or fibres of the paper. 
 \begin{figure}[h]
 \center
 \includegraphics[width=3in]{2p_table_layout.eps}
@@ -123,36 +140,25 @@ Perform the modification and use your scanning software to image the surface of 
 
 \clearpage
 
-\section{Imaging pollen grains}
-Pollen grains are the standard test sample of choice because they have micron-scale features and are brightly autofluorescent. 
-Nonetheless, they are much dimmer than green fluorescent slide.
-You will need assistance to replace the photodiode with a PMT.
-The PMT is \textbf{delicate}. 
-Do not expose it to even room light when powered on, as this will damage the photocathode. 
-To increase the frame rate and obtain higher quality images you will switch from the prototype scanning software you have used until now to ScanImage, a MATLAB-based solution for 2-p imaging. 
-Find pollen grains and obtain some images. 
-
-\section{Making an upright microscope for imaging zebrafish larvae}
+\section{Making an upright microscope}
 The 10x air objective you are using has an NA of about 0.2 whereas we usually perform 2-photon imaging using water immersion objectives with an NA of at least 0.8 .
 How do you expect the image to change with a higher NA objective?
 
 You will modify your microscope to convert it from a horizontal scan path to a vertical (upright) path that is compatible with a higher NA water immersion objective. 
-This will allow you to obtain bright, higher resolution, images of pollen grains and then zebrafish larvae. 
-Your microscope will look like that shown in Figure~\ref{fig:completed}.
 
-\begin{figure}[h]
-\center
-\includegraphics[width=2.0in]{./figures/completed_2p.eps}
-\caption{Completed, upright, 2-photon minus emission path.}
-\label{fig:completed}
-\end{figure}
+You will also add a PMT and dichroic, which will improve the detection path considerably. 
+The PMT is \textbf{delicate}. 
+Do not expose it to even room light when powered on, as this will damage the photocathode. 
+Do this as described below with assistance from a TA. 
 
-Remove the  objective and the end cage plate and replace with the dichgroic cube (Fig.~\ref{fig:dichroic_holder}.
-Think before you do this, however. 
+
+\subsubsection{Modifying the excitation path}
+Remove the  objective and the end cage plate and replace with the dichroic cube (Fig.~\ref{fig:dichroic_holder}.
 How far should the scanner relay optics be from the scanners and how far from the tube lens should the dichroic cube be mounted?
 The path of the beam through the cube is depicted in Fig.~\ref{fig:dichroic_holder} as a red line.
 To help you with this step, you can move the scanners over a small scan angle whilst looking at the the beam motion. 
 Finally, is the beam exiting the cube traveling directly downwards and so on-axis with the objective we will add?
+Your microscope will look like that shown in Figure~\ref{fig:completed}.
 
 \begin{figure}[h]
 \center
@@ -162,7 +168,13 @@ Finally, is the beam exiting the cube traveling directly downwards and so on-axi
 \label{fig:dichroic_holder}
 \end{figure}
 
-Once you are satisfied with the alignment, you can try scanning the fluorescent plastic sample card with the high NA objective. 
+\begin{figure}[h]
+\center
+\includegraphics[width=2.0in]{./figures/completed_2p.eps}
+\caption{Completed, upright, 2-photon minus emission path.}
+\label{fig:completed}
+\end{figure}
+
 
 \subsubsection{Adding the emission path}
 You now have a functioning excitation path but we still need to add the collection path. 
@@ -170,8 +182,7 @@ Instead of just dangling the PMT next to the sample, we will now use the objecti
 Think carefully what lens or lenses you need to add before the PMT. 
 Hint: what should be conjugate with the PMT?
 What other optical element do you need to add before the PMT?
-Set this up and get good images of pollen grains. 
-Once this is done you are ready for fish!
+Once this is done you are ready for some samples!
 
 \begin{figure}[h]
 \center
@@ -179,6 +190,24 @@ Once this is done you are ready for fish!
 \caption{Path of the emitted light through the dichroic cube. The cube's side-plate is removed to show the dichroic mirror itself. The illustration also shows the objective (transparent) and PMT holder (to the far right).}
 \label{fig:dichroic_holder_paths}
 \end{figure}
+
+
+
+
+
+
+
+Once you are satisfied with the alignment, you can try scanning the fluorescent plastic sample card with the high NA objective. 
+
+
+
+\subsection{Imaging Samples}
+Pollen grains are the standard test sample of choice because they have micron-scale features and are brightly autofluorescent. 
+Nonetheless, they are much dimmer than green fluorescent slide.
+Find pollen grains and obtain some images. 
+The TAs can show you how to acquire a Z stack so you have a 3D image of a pollen grain.
+
+Repeat with a coronal section containing GFP-labelled neurons. 
 
 
 
